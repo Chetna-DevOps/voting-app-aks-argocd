@@ -1,0 +1,67 @@
+# Build and push an image to Azure Container Registry
+
+trigger: 
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - result/*
+
+resources:
+- repo: self
+
+variables:
+- group: ci-cd-variables
+
+- name: imageRepository
+  value: votingapp/result
+
+- name: dockerfilePath
+  value: $(Build.SourcesDirectory)/result/Dockerfile
+
+- name: tag
+  value: $(Build.BuildId)
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+
+# Build Docker image and push to ACR 
+
+- stage: Build_and_Push
+  displayName: Build_and_Push
+  jobs:
+  - job: Build_and_Push
+    displayName: Build_and_Push
+    steps:
+    - task: Docker@2
+      displayName: Build_and_Push
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '$(dockerfilePath)'
+        tags: '$(tag)'
+
+# Update image tags in ACR using a shell script
+
+- stage: Update_Manifests
+  displayName: Update_Manifests
+  dependsOn: Build_and_Push
+  jobs:
+  - job: Update
+    displayName: Update
+    steps:
+    - task: ShellScript@2
+      inputs:
+        scriptPath: 'scripts/updateK8sManifests.sh'
+        args: 'result $(imageRepository) $(tag)'
+      env:
+        pat_token: $(pat_token)
+        azure_devops_org_url: $(azure_devops_org_url)
+        azure_repo_name: $(azure_repo_name)
+        git_email: $(git_email)
+        git_name: $(git_name)
+        acr_login_server: $(acr_login_server) 
