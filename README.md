@@ -7,7 +7,7 @@ A microservices voting application deployed on Azure Kubernetes Service using a 
 - **Vote frontend** — Python (Flask) — lets users vote between two options
 - **Result frontend** — Node.js — shows live voting results
 - **Worker** — C# (.NET) — consumes votes from Redis and stores in PostgreSQL
-- **Queue** — Redis — collects incoming votes
+- **Redis** — collects incoming votes
 - **Database** — PostgreSQL
 - **CI** — Azure DevOps Pipelines
 - **CD** — ArgoCD (GitOps)
