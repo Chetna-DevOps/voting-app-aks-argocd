@@ -31,4 +31,3 @@
 ## Cluster Health
 
 ![Cluster Health](screenshots/cluster_health.png)
-![Cluster Health](screenshots/cluster_health_2.png)
