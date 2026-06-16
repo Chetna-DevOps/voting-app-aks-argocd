@@ -18,8 +18,6 @@ Base application sourced from [dockersamples/example-voting-app](https://github.
 - **Registry** — Azure Container Registry (ACR)
 - **Ingress** — NGINX on AKS
 
-![Architecture](screenshots/architecture.png)
-
 ## CI/CD Flow
 
 1. Code push triggers an Azure DevOps pipeline
