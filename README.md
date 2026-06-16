@@ -2,6 +2,10 @@
 
 A microservices voting application deployed on Azure Kubernetes Service using a GitOps-based CI/CD pipeline.
 
+## Credits
+
+Base application sourced from [dockersamples/example-voting-app](https://github.com/dockersamples/example-voting-app).
+
 ## Tech Stack
 
 - **Vote frontend** — Python (Flask) — lets users vote between two options
@@ -46,10 +50,6 @@ A microservices voting application deployed on Azure Kubernetes Service using a 
 ## Screenshots
 
 See [Reference Screenshots.md](./Reference_Screenshots.md)
-
-## Credits
-
-Base application sourced from [dockersamples/example-voting-app](https://github.com/dockersamples/example-voting-app).
 
 ## What I did
 
