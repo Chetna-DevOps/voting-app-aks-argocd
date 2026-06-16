@@ -42,7 +42,7 @@ Base application sourced from [dockersamples/example-voting-app](https://github.
 ## Setup
 
 - Create a variable group `ci-cd-variables` in Azure DevOps with: `pat_token`, `acr_login_server`, `azure_devops_org_url`, `azure_repo_name`, `git_email`, `git_name`, `dockerRegistryServiceConnection`
-- Create ACR pull secret in the cluster: kubectl create secret docker-registry acr-secret ...  -n staging
+- Create ACR pull secret in the cluster: kubectl create secret docker-registry acr-secret ...  
 - Update `<YOUR-CLUSTER-IP>` in `k8s-specifications/ingress.yaml` and `<ACR_LOGIN_SERVER>` in `vote-deployment.yaml, result-deployment.yaml & worker-deployment.yaml ` 
 - Point ArgoCD to this repo with path `k8s-specifications`, auto-sync enabled
 
