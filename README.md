@@ -46,10 +46,6 @@ Base application sourced from [dockersamples/example-voting-app](https://github.
 - Update `<YOUR-CLUSTER-IP>` in `k8s-specifications/ingress.yaml` and `<ACR_LOGIN_SERVER>` in `vote-deployment.yaml, result-deployment.yaml & worker-deployment.yaml ` 
 - Point ArgoCD to this repo with path `k8s-specifications`, auto-sync enabled
 
-## Screenshots
-
-See [Reference Screenshots.md](./Reference_Screenshots.md)
-
 ## What I did
 
 - Set up Azure DevOps CI pipelines for all three services (vote, result, worker)
